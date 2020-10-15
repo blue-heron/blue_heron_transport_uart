@@ -24,4 +24,3 @@ config = %BlueHeron.HCI.Transport.UART{
 The source code is released under the MIT license.
 
 Check [NOTICE](NOTICE) and [LICENSE](LICENSE) files for more information.
-
