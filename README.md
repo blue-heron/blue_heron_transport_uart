@@ -2,6 +2,7 @@
 
 [![Hex version](https://img.shields.io/hexpm/v/blue_heron_transport_uart.svg "Hex version")](https://hex.pm/packages/blue_heron_transport_uart)
 [![API docs](https://img.shields.io/hexpm/v/blue_heron_transport_uart.svg?label=hexdocs "API docs")](https://hexdocs.pm/blue_heron_transport_uart/BlueHeronTransportUART.html)
+[![CircleCI](https://circleci.com/gh/blue-heron/blue_heron_transport_uart/tree/main.svg?style=svg)](https://circleci.com/gh/blue-heron/blue_heron_transport_uart/tree/main)
 
 BlueHeron supports UART-based Bluetooth modules. Currently, this ONLY includes
 the Cypress Semiconductor
