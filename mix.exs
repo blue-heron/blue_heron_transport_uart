@@ -32,7 +32,7 @@ defmodule BlueHeronTransportUart.MixProject do
 
   defp deps do
     [
-      {:blue_heron, "~> 0.2.1"},
+      {:blue_heron, "~> 0.2.1 or ~> 0.3.0"},
       {:circuits_uart, "~> 1.4"},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
