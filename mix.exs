@@ -35,7 +35,7 @@ defmodule BlueHeronTransportUart.MixProject do
       {:blue_heron, "~> 0.2.1"},
       {:circuits_uart, "~> 1.4"},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false},
-      {:dialyxir, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.2", only: :test, runtime: false}
     ]
   end
