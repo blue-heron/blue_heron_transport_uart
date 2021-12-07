@@ -8,6 +8,7 @@ defmodule BlueHeronTransportUART do
   """
 
   use GenServer
+  require Logger
   alias Circuits.UART
   alias BlueHeronTransportUART.Framing
 
@@ -45,10 +46,20 @@ defmodule BlueHeronTransportUART do
 
   @impl GenServer
   def init(config) do
-    {:ok, pid} = UART.start_link()
-    uart_opts = Keyword.merge([active: true, framing: {Framing, []}], config.uart_opts)
-    :ok = UART.open(pid, config.device, uart_opts)
-    {:ok, %{config | uart_pid: pid}}
+    Logger.info(%{uart_transport_config: config})
+    uart_opts = Keyword.merge(config.uart_opts, active: true, framing: {Framing, []})
+
+    case config.uart_pid do
+      nil ->
+        {:ok, pid} = UART.start_link()
+        :ok = UART.open(pid, config.device, uart_opts)
+        {:ok, %{config | uart_pid: pid}}
+
+      pid ->
+        UART.controlling_process(pid, self())
+        :ok = UART.configure(pid, uart_opts)
+        {:ok, %{config | uart_opts: uart_opts}}
+    end
   end
 
   @impl GenServer
