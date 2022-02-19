@@ -1,7 +1,7 @@
 defmodule BlueHeronTransportUart.MixProject do
   use Mix.Project
 
-  @version "0.1.2"
+  @version "0.1.3"
   @source_url "https://github.com/blue-heron/blue_heron_transport_uart"
 
   def project do
