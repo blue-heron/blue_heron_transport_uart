@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.3
+
+* Enhancements:
+  * update `blue_heron` to 0.3.0
+
 ## v0.1.2
 
 * Enhancements:
