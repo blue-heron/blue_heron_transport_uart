@@ -10,7 +10,7 @@ defmodule BlueHeronTransportUART.Framing do
   defmodule State do
     @moduledoc false
 
-    defstruct frame: <<>>, remaining_bytes: nil, type: nil
+    defstruct frame: <<>>, type: nil, frames: []
   end
 
   @behaviour Framing
@@ -49,8 +49,8 @@ defmodule BlueHeronTransportUART.Framing do
           rest::binary>>,
         %{type: 0x2} = state
       ) do
-    {:ok, [<<0x2, handle::little-12, flags::4, length::little-16, data::binary-size(length)>>],
-     %{state | type: nil, frame: rest}}
+    frame = <<0x2, handle::little-12, flags::4, length::little-16, data::binary-size(length)>>
+    process(rest, %{state | type: nil, frames: [frame | state.frames]})
   end
 
   def process(
@@ -58,11 +58,15 @@ defmodule BlueHeronTransportUART.Framing do
           event_parameters::binary-size(parameter_total_length), rest::binary>>,
         %{type: 0x4} = state
       ) do
-    {:ok,
-     [
-       <<0x4, event_code::size(8), parameter_total_length::size(8),
-         event_parameters::binary-size(parameter_total_length)>>
-     ], %{state | type: nil, frame: rest}}
+    frame =
+      <<0x4, event_code::size(8), parameter_total_length::size(8),
+        event_parameters::binary-size(parameter_total_length)>>
+
+    process(rest, %{state | type: nil, frames: [frame | state.frames]})
+  end
+
+  def process(<<>>, state) do
+    {:ok, Enum.reverse(state.frames), %{state | frames: []}}
   end
 
   def process(data, state), do: {:in_frame, [], %{state | frame: data}}
