@@ -2,12 +2,9 @@
 
 [![Hex version](https://img.shields.io/hexpm/v/blue_heron_transport_uart.svg "Hex version")](https://hex.pm/packages/blue_heron_transport_uart)
 [![API docs](https://img.shields.io/hexpm/v/blue_heron_transport_uart.svg?label=hexdocs "API docs")](https://hexdocs.pm/blue_heron_transport_uart/BlueHeronTransportUART.html)
-[![CircleCI](https://circleci.com/gh/blue-heron/blue_heron_transport_uart/tree/main.svg?style=svg)](https://circleci.com/gh/blue-heron/blue_heron_transport_uart/tree/main)
+[![mix test](https://github.com/blue-heron/blue_heron_transport_uart/actions/workflows/elixir.yaml/badge.svg)](https://github.com/blue-heron/blue_heron_transport_uart/actions/workflows/elixir.yaml)
 
-BlueHeron supports UART-based Bluetooth modules. Currently, this ONLY includes
-the Cypress Semiconductor
-[BCM43438](https://www.cypress.com/part/cychpset-p62s143438-1). This part is on
-the Raspberry Pi Zero W and the Raspberry Pi 3 B. It is NOT on the 3 B+.
+BlueHeron supports UART-based Bluetooth modules.
 
 To use, add `:blue_heron_transport_uart` to your `mix.exs` dependencies and
 adapt the following to initialize a transport context.
