@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.4
+
+* Bugfixes:
+  * Fix issue with UART framing module causing doubled-up messages to not be delivered in order
+* Enhancements:
+  * Allow initialized UART connections to be passed via config
+
 ## v0.1.3
 
 * Enhancements:
